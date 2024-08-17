@@ -5,7 +5,6 @@
 //  Created by Yugo Sugiyama on 2024/08/08.
 //
 
-import UIKit
 import SwiftUI
 
 public enum UserDefaultsKey: String {
