@@ -64,7 +64,8 @@ public struct PianoLayout: Layout {
                 }
             } else {
                 let blackKeyOffset = blackKeyWidth * pianoKey.keyType.keyOffsetRatio
-                let blackKeyX = whiteKeyX - keyMargin - blackKeyWidth * 1.5 + blackKeyOffset
+                // For some reason, the leading part is cut off from the screen by the width of the white keys * 0.5, so adjust it manually by minus (whiteKeyWidth / 2) .
+                let blackKeyX = whiteKeyX - whiteKeyWidth / 2 - (keyMargin / 2) - blackKeyWidth / 2 + blackKeyOffset
                 // Place only if subview is within view range
                 guard blackKeyX + blackKeyWidth > bounds.minX, blackKeyX < bounds.maxX else { return }
                 subviews[index].place(
@@ -124,7 +125,7 @@ public struct PianoView: View {
             .ignoresSafeArea(edges: .horizontal)
             .onAppear {
                 proxy.scrollTo(
-                    PianoKey(keyType: .c, octave: .fourth),
+                    PianoKey(keyType: .c, octave: .minusFirst),
                     anchor: .center
                 )
             }
