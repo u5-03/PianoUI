@@ -125,7 +125,7 @@ public struct PianoView: View {
             .ignoresSafeArea(edges: .horizontal)
             .onAppear {
                 proxy.scrollTo(
-                    PianoKey(keyType: .c, octave: .minusFirst),
+                    PianoKey(keyType: .c, octave: .fourth),
                     anchor: .center
                 )
             }
