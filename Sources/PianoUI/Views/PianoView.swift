@@ -86,10 +86,13 @@ public struct PianoView: View {
     private let pianoKeys = PianoKey.allCases
 
     public let pianoStrokes: [PianoKeyStroke]
+    private let centerDisplayKey: PianoKey
     public let didTriggerKeyStrokeEvent: ((PianoKeyStroke) -> Void)?
 
-    public init(pianoStrokes: [PianoKeyStroke], didTriggerKeyStrokeEvent: ((PianoKeyStroke) -> Void)? = nil) {
+    public init(pianoStrokes: [PianoKeyStroke],
+                centerDisplayKey: PianoKey = PianoKey(keyType: .c, octave: .fourth), didTriggerKeyStrokeEvent: ((PianoKeyStroke) -> Void)? = nil) {
         self.pianoStrokes = pianoStrokes
+        self.centerDisplayKey = centerDisplayKey
         self.didTriggerKeyStrokeEvent = didTriggerKeyStrokeEvent
     }
 
@@ -125,7 +128,7 @@ public struct PianoView: View {
             .ignoresSafeArea(edges: .horizontal)
             .onAppear {
                 proxy.scrollTo(
-                    PianoKey(keyType: .c, octave: .fourth),
+                    centerDisplayKey,
                     anchor: .center
                 )
             }
