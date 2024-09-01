@@ -89,7 +89,7 @@ public struct PianoView: View {
     private let centerDisplayKey: PianoKey
     public let didTriggerKeyStrokeEvent: ((PianoKeyStroke) -> Void)?
 
-    public init(pianoStrokes: [PianoKeyStroke],
+    public init(pianoStrokes: [PianoKeyStroke] = [],
                 centerDisplayKey: PianoKey = PianoKey(keyType: .c, octave: .fourth), didTriggerKeyStrokeEvent: ((PianoKeyStroke) -> Void)? = nil) {
         self.pianoStrokes = pianoStrokes
         self.centerDisplayKey = centerDisplayKey
